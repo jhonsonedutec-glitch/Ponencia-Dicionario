@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ponencia académica: Del Bosque a la Nube, una red digital para el futuro de las lenguas Awajún y Wampis." />
+  <title>Del Bosque a la Nube | Ponencia Académica</title>
+  <style>
+    :root {
+      --verde: #1A472A;
+      --amarillo: #FFD100;
+      --fondo: #F7F7F7;
+      --texto: #333333;
+      --blanco: #ffffff;
+      --sombra: 0 18px 45px rgba(26, 71, 42, 0.13);
+      --radio: 22px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 92px;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Lato", "Open Sans", Arial, sans-serif;
+      color: var(--texto);
+      background: linear-gradient(180deg, #ffffff 0%, var(--fondo) 100%);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; }
+
+    .top-accent {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: min(32vw, 360px);
+      height: 14px;
+      background: var(--amarillo);
+      border-bottom-left-radius: 999px;
+    }
+
+    header.hero {
+      position: relative;
+      overflow: hidden;
+      color: var(--blanco);
+      background:
+        radial-gradient(circle at top left, rgba(255, 209, 0, 0.18), transparent 34%),
+        linear-gradient(135deg, #12341e 0%, var(--verde) 70%);
+      padding: 76px 22px 98px;
+      border-bottom-left-radius: 50% 10%;
+      border-bottom-right-radius: 50% 10%;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -10% -60px -10%;
+      height: 130px;
+      background: var(--blanco);
+      border-radius: 50% 50% 0 0;
+      opacity: 0.95;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: min(100%, var(--max));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: #fff7c8;
+      font-weight: 700;
+      letter-spacing: .08em;
+      font-size: .82rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 46px;
+      height: 4px;
+      background: var(--amarillo);
+      border-radius: 99px;
+    }
+
+    h1, h2, h3 {
+      font-family: "Montserrat", "Roboto", Arial, sans-serif;
+      color: var(--verde);
+      line-height: 1.2;
+    }
+
+    h1 {
+      max-width: 980px;
+      margin: 0 auto;
+      color: var(--blanco);
+      font-size: clamp(2.0rem, 2.2vw, 4.7rem);
+      letter-spacing: -0.04em;
+      text-align: center;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 24px auto 0;
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      color: rgba(255,255,255,0.9);
+      text-align: center;
+    }
+
+    .speaker-card {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 34px;
+      max-width: 1100px;
+    }
+
+    .speaker-card span {
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.08);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+      font-size: .8rem;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,0.94);
+      border-bottom: 1px solid rgba(26, 71, 42, 0.11);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.05);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-inner {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      overflow-x: auto;
+      scrollbar-width: thin;
+    }
+
+    /* Estilos de scrollbar para navegadores Webkit (Chrome, Safari) */
+    .nav-inner::-webkit-scrollbar {
+      height: 6px;
+    }
+    .nav-inner::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .nav-inner::-webkit-scrollbar-thumb {
+      background-color: rgba(26, 71, 42, 0.3);
+      border-radius: 3px;
+    }
+    .nav-inner::-webkit-scrollbar-thumb:hover {
+      background-color: rgba(26, 71, 42, 0.5);
+    }
+
+    .nav-inner a {
+      flex: 0 0 auto;
+      text-decoration: none;
+      color: var(--verde);
+      font-weight: 800;
+      font-size: .9rem;
+      padding: 10px 14px;
+      border-radius: 999px;
+      transition: background .2s ease, color .2s ease, transform .2s ease;
+    }
+
+    .nav-inner a:hover,
+    .nav-inner a.active {
+      background: var(--verde);
+      color: var(--blanco);
+      transform: translateY(-1px);
+    }
+
+    main {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      padding: 44px 18px 70px;
+    }
+
+    section {
+      margin: 0 0 28px;
+      padding: clamp(24px, 4vw, 42px);
+      background: var(--blanco);
+      border-radius: var(--radio);
+      box-shadow: var(--sombra);
+      border: 1px solid rgba(26, 71, 42, 0.07);
+    }
+
+    section h2 {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 0 0 18px;
+      font-size: clamp(1.55rem, 3vw, 2.25rem);
+      letter-spacing: -0.02em;
+    }
+
+    section h2::before {
+      content: "";
+      width: 10px;
+      height: 38px;
+      flex: 0 0 auto;
+      background: var(--amarillo);
+      border-radius: 999px;
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      text-decoration: none;
+      background: var(--verde);
+      color: var(--blanco);
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: all .2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(26, 71, 42, 0.15);
+    }
+
+    .button.button-secondary {
+      background: var(--blanco);
+      color: var(--verde);
+      border: 1px solid rgba(26, 71, 42, 0.15);
+    }
+
+    .button.button-secondary:hover {
+      background: var(--amarillo);
+      color: var(--verde);
+      border-color: var(--amarillo);
+    }
+
+    p { margin: 0 0 16px; }
+
+    .question {
+      margin: 22px 0 0;
+      padding: 20px;
+      border-left: 6px solid var(--amarillo);
+      border-radius: 16px;
+      background: #fff9d9;
+      color: var(--verde);
+      font-weight: 800;
+      font-size: 1.08rem;
+    }
+
+    .actor-grid,
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .card {
+      padding: 22px;
+      border-radius: 20px;
+      background: #fbfbfb;
+      border: 1px solid rgba(26, 71, 42, 0.1);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.08rem;
+    }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      gap: 14px;
+      padding: 0;
+      margin: 22px 0 0;
+      list-style: none;
+    }
+
+    .steps li {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 16px;
+      border-radius: 18px;
+      background: #f8faf8;
+      border: 1px solid rgba(26, 71, 42, 0.08);
+    }
+
+    .steps li::before {
+      content: counter(step);
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--verde);
+      color: var(--amarillo);
+      font-weight: 900;
+    }
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border-radius: 18px;
+      border: 1px solid rgba(26, 71, 42, 0.14);
+      margin-top: 22px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 820px;
+      border-collapse: collapse;
+      background: var(--blanco);
+    }
+
+    th, td {
+      padding: 15px 16px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid rgba(26, 71, 42, 0.11);
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      background: var(--verde);
+      color: var(--blanco);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: .92rem;
+    }
+
+    tbody tr:nth-child(even) { background: #f9fbf9; }
+    tbody tr:hover { background: #fff9d9; }
+    tbody tr:last-child td { border-bottom: 0; }
+
+
+
+    .closing {
+      background:
+        linear-gradient(135deg, rgba(26, 71, 42, 0.96), rgba(18, 52, 30, 0.94)),
+        var(--verde);
+      color: rgba(255,255,255,0.94);
+    }
+
+    .closing h2 { color: var(--blanco); }
+
+    footer {
+      position: relative;
+      margin-top: 60px;
+      padding: 20px 22px 10px;
+      background: var(--verde);
+      color: var(--blanco);
+      text-align: center;
+      border-top-left-radius: 50% 30px;
+      border-top-right-radius: 50% 30px;
+    }
+
+    footer::before,
+    footer::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--verde);
+      border-top-left-radius: inherit;
+      border-top-right-radius: inherit;
+      z-index: -1;
+    }
+
+    footer::before {
+      top: 10px;
+      opacity: 0.5;
+    }
+
+    footer::after {
+      top: 20px;
+      opacity: 0.2;
+    }
+
+    .footer-content-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .footer-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-pattern {
+      max-height: 100px;
+      border-radius: 50%;
+      mix-blend-mode: lighten;
+    }
+
+
+    .footer-logos img {
+      max-height: 60px;
+    }
+    .motto { color: var(--verde); font-weight: 900; font-size: 1.08rem; text-align: right; }
+
+    @media (max-width: 860px) {
+      header.hero { padding: 58px 18px 82px; }
+      .speaker-card,
+      .actor-grid,
+      .results-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; text-align: center; }
+      .motto { text-align: center; }
+      .license-text { white-space: normal; }
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner { padding: 8px 12px; }
+      .nav-inner a { font-size: .82rem; padding: 9px 12px; }
+      main { padding-top: 28px; }
+      section { padding: 22px 18px; }
+      section h2 { align-items: flex-start; }
+      .steps li { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="top-accent" aria-hidden="true"></div>
+    <div class="hero-content">
+      <p class="eyebrow">Ponencia académica por el día de las lenguas originarias en el Perú</p>
+      <h1>Entre el archivo y la comunidad: lexicografía digital interactiva para la preservación de las lenguas awajún y wampis</h1>
+      <p class="subtitle">Tecnología educativa colaborativa para la preservación digital del idioma awajún y wampis: para fortalecer lenguas originarias de la Amazonía peruana.</p>
+      <div class="speaker-card" aria-label="Datos del ponente">
+        <span><strong>Ponente:</strong><br>Gildemister Julca Ramos</span>
+        <span><strong>Formación:</strong><br>Estudiante de la Escuela de Educación Tecnológica</span>
+        <span><strong>Correo:</strong><br>gjulca@unibagua.edu.pe</span>
+        <span><strong>Orcid:</strong><br><a href="https://orcid.org/0009-0006-1920-8639" target="_blank" rel="noopener noreferrer">orcid.org/0009-0006-1920-8639</a></span>
+      </div>
+    </div>
+  </header>
+
+  <nav aria-label="Navegación principal">
+    <div class="nav-inner">
+      <a href="#resumen">Resumen</a>
+      <a href="#problematica">Problemática</a>
+      <a href="#justificacion">Justificación</a>
+      <a href="#modelo">Modelo Intercultural</a>
+      <a href="#metodologia">Metodología</a>
+      <a href="#cuadro">Cuadro Comparativo</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#conclusiones">Conclusiones</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="resumen">
+      <h2>Resumen</h2>
+      <p>El proyecto <strong>“Diccionario Colaborativo Awajún-Wampis”</strong> nace con el propósito de ayudar a conservar y fortalecer dos lenguas originarias de la Amazonía peruana: el Awajún y el Wampis.</p>
+      <p>La propuesta no busca crear solamente un diccionario digital, sino también un espacio de participación comunitaria. En esta plataforma pueden colaborar sabios y sabias de las comunidades, docentes de educación intercultural y estudiantes universitarios de la Universidad Nacional Intercultural Fabiola Salazar Leguía de Bagua.</p>
+      <p>De esta manera, el diccionario deja de ser una herramienta estática y se convierte en un espacio vivo, construido por la propia comunidad. Su finalidad es fortalecer la identidad cultural, promover el uso de las lenguas Awajún y Wampis, y acercarlas a las nuevas generaciones mediante la tecnología.</p>
+    </section>
+
+    <section id="problematica">
+      <h2>Problemática</h2>
+      <p>En la actualidad, muchas lenguas originarias enfrentan grandes desafíos. La globalización, el uso predominante del castellano y la falta de materiales educativos en lengua materna hacen que estas lenguas se usen cada vez menos en algunos espacios.</p>
+      <p>Las lenguas Awajún y Wampis también viven esta situación. Aunque siguen siendo parte fundamental de la identidad de sus pueblos, necesitan más herramientas que ayuden a enseñarlas, practicarlas y mantenerlas vivas.</p>
+      <p>Los diccionarios tradicionales suelen ser difíciles de conseguir, no siempre están actualizados y muchas veces no llegan a todos los estudiantes, docentes o familias. Algunas plataformas digitales pueden ser costosas o depender de instituciones externas, lo que limita el control de la comunidad sobre su propio conocimiento.</p>
+      <div class="question">¿Cómo podemos crear una herramienta digital fácil de usar, económica, sostenible y que permita a la comunidad cuidar, fortalecer y compartir su propia lengua?</div>
+    </section>
+
+    <section id="justificacion">
+      <h2>Justificación</h2>
+      <p>Preservar una lengua no significa solamente guardar palabras. Significa también proteger una forma de ver el mundo, una historia, una cultura, una memoria y una identidad.</p>
+      <p>Este proyecto se justifica porque existe una necesidad urgente de crear herramientas que promuevan el uso de las lenguas originarias, especialmente entre niños, jóvenes y estudiantes.</p>
+      <p>El Diccionario Colaborativo Awajún-Wampis reconoce que los verdaderos conocedores de la lengua son sus propios hablantes. Por eso, la comunidad no participa como espectadora, sino como protagonista.</p>
+      <p>La tecnología no reemplaza el conocimiento ancestral; funciona como un puente que une generaciones, saberes y experiencias.</p>
+    </section>
+
+    <section id="modelo">
+      <h2>Modelo Intercultural</h2>
+      <p>Este proyecto no se trata únicamente de programación o de crear una página web. También propone una forma de trabajo basada en el respeto, el diálogo y la colaboración entre diferentes actores de la comunidad.</p>
+      <div class="actor-grid">
+        <article class="card">
+          <h3>A) Sabios y sabias</h3>
+          <p>Son guardianes de la memoria ancestral. Conocen el significado profundo de las palabras, su uso correcto y su importancia cultural.</p>
+        </article>
+        <article class="card">
+          <h3>B) Docentes de educación intercultural</h3>
+          <p>Llevan estos conocimientos al aula y pueden usar el diccionario como herramienta educativa para reforzar el uso de las lenguas Awajún y Wampis.</p>
+        </article>
+        <article class="card">
+          <h3>C) Estudiantes universitarios</h3>
+          <p>Aportan creatividad, energía y conocimientos tecnológicos para conectar la tradición con el mundo digital.</p>
+        </article>
+      </div>
+      <p style="margin-top:18px;">La unión de estos tres grupos convierte el diccionario en un espacio de encuentro, aprendizaje, diálogo entre generaciones y fortalecimiento de la identidad colectiva.</p>
+    </section>
+
+    <section id="metodologia">
+      <h2>Metodología: tecnología al servicio de la comunidad</h2>
+      <p>La plataforma fue pensada para ser sencilla, accesible y fácil de mantener. El diccionario funciona mediante una página web desarrollada con React.js y se apoya en Google Forms, Google Sheets y Google Apps Script para organizar la colaboración y validación de palabras.</p>
+      <ol class="steps">
+        <li>Estudiantes o docentes registran nuevas palabras mediante un formulario de Google.</li>
+        <li>Las palabras llegan a una hoja de cálculo de Google Sheets, donde se organizan y revisan.</li>
+        <li>Un comité realiza una primera revisión lingüística, educativa y técnica.</li>
+        <li>Los sabios y sabias validan la palabra, su significado y su uso desde la mirada cultural.</li>
+        <li>La palabra validada se publica en el diccionario digital para consulta pública.</li>
+      </ol>
+    </section>
+
+    <section id="cuadro">
+      <h2>Cuadro Comparativo</h2>
+      <p>El siguiente cuadro compara el Diccionario Awajún-Wampis con otras plataformas digitales dedicadas a la documentación y preservación de lenguas.</p>
+      <div class="table-wrap" role="region" aria-label="Cuadro comparativo de enfoques" tabindex="0">
+        <table>
+          <thead>
+            <tr>
+              <th>Característica</th>
+              <th>Diccionario Awajún-Wampis</th>
+              <th>Living Dictionaries</th>
+              <th>FirstVoices</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Tipo de tecnología</td><td>Usa una página web propia con React.js y herramientas de Google.</td><td>Usa una plataforma web ya creada por una institución externa.</td><td>Usa una plataforma web centralizada.</td></tr>
+            <tr><td>Costo</td><td>Muy bajo, porque utiliza herramientas gratuitas como Google Forms, Google Sheets y GitHub Pages.</td><td>Es gratuito, pero depende del apoyo y continuidad de la organización que lo mantiene.</td><td>Es gratuito para algunas comunidades, pero puede depender de políticas externas.</td></tr>
+            <tr><td>Control de los datos</td><td>La comunidad tiene control total de sus palabras, significados y archivos.</td><td>La comunidad puede usar sus datos, pero estos están dentro de una plataforma de terceros.</td><td>Los datos están protegidos, pero se almacenan en una plataforma externa.</td></tr>
+            <tr><td>Facilidad de uso</td><td>Es fácil de manejar porque usa formularios y hojas de cálculo de Google.</td><td>Requiere aprender a usar la plataforma.</td><td>También requiere capacitación para manejar correctamente el sistema.</td></tr>
+            <tr><td>Personalización</td><td>Se puede adaptar libremente según las necesidades culturales, educativas y lingüísticas de la comunidad.</td><td>Tiene opciones limitadas de personalización.</td><td>Tiene plantillas y funciones ya definidas.</td></tr>
+            <tr><td>Sostenibilidad</td><td>Es muy sostenible porque no depende completamente de una empresa o plataforma externa.</td><td>Depende de que la plataforma siga funcionando y recibiendo apoyo.</td><td>Depende de la continuidad de la institución que la administra.</td></tr>
+            <tr><td>Participación comunitaria</td><td>Tiene un modelo claro basado en colaboración entre sabios, docentes y estudiantes.</td><td>Permite documentar lenguas, pero no propone un modelo social específico.</td><td>Promueve la participación comunitaria, aunque su modelo no está directamente unido a la estructura tecnológica.</td></tr>
+            <tr><td>Valor principal</td><td>Une tecnología, cultura y comunidad para fortalecer las lenguas Awajún y Wampis.</td><td>Ayuda a documentar lenguas en una plataforma digital.</td><td>Apoya la preservación lingüística y cultural de comunidades indígenas.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:18px;">El Diccionario Awajún-Wampis destaca por su bajo costo, facilidad de uso y por poner a la comunidad en el centro del proyecto.</p>
+    </section>
+
+    <section id="resultados">
+      <h2>Resultados</h2>
+      <div class="results-grid">
+        <article class="card"><h3>Aplicación web funcional</h3><p>El proyecto ya cuenta con una aplicación web pública y funcional.</p></article>
+        <article class="card"><h3>Sistema colaborativo</h3><p>Las palabras pueden ser propuestas, revisadas, validadas y publicadas de manera ordenada.</p></article>
+        <article class="card"><h3>Modelo replicable</h3><p>El modelo puede ser adaptado por otras comunidades que desean conservar y fortalecer sus lenguas originarias.</p></article>
+      </div>
+      <div class="button-group">
+        <a href="https://julcajhimy-tech.github.io/diccionario-awajun-wampis" target="_blank" rel="noopener noreferrer" class="button">Ver diccionario digital ↗</a>
+        <a href="https://livingdictionaries.app/" target="_blank" rel="noopener noreferrer" class="button button-secondary">Living Dictionaries ↗</a>
+        <a href="https://www.firstvoices.com/" target="_blank" rel="noopener noreferrer" class="button button-secondary">FirstVoices ↗</a>
+      </div>
+    </section>
+
+    <section id="conclusiones">
+      <h2>Conclusiones</h2>
+      <p>El mayor logro de este proyecto no es solamente la creación de una página web. Su verdadero valor está en haber creado un modelo de trabajo donde la comunidad es la protagonista.</p>
+      <p>El proyecto demuestra que la tecnología puede ayudar a fortalecer una lengua cuando se usa con respeto, participación y compromiso cultural.</p>
+      <p>Preservar una lengua no significa guardarla como algo del pasado. Preservar una lengua significa usarla, compartirla, enseñarla y convertirla en un punto de encuentro entre generaciones.</p>
+      <p>En conclusión, el Diccionario Colaborativo Awajún-Wampis une tradición y tecnología para reconstruir identidad, fortalecer la convivencia intercultural y dar a la comunidad control sobre su patrimonio lingüístico y cultural.</p>
+    </section>
+
+    <section class="closing" id="cierre">
+      <h2>Palabras finales</h2>
+      <p>Una lengua vive cuando su pueblo la habla, la enseña y la comparte. Por eso, este proyecto busca que las lenguas Awajún y Wampis sigan presentes no solo en la memoria de los mayores, sino también en las aulas, en los hogares y en los espacios digitales.</p>
+      <p>El Diccionario Colaborativo Awajún-Wampis es una muestra de que la tecnología puede caminar junto a la cultura, siempre que sea construida con la participación de la comunidad.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content-wrapper">
+      <p>Con el respaldo de:</p>
+      <div class="footer-logos">
+        <div class="logo-bg">
+          <img src="https://www.image2url.com/r2/default/images/1779768557168-c1e2f2dd-0ab2-42ef-9ccc-12bef118a801.jpg" alt="Logo UNIBAGUA">
+        </div>
+        <div class="logo-bg">
+          <img src="https://www.image2url.com/r2/default/images/1779768552661-67b4a6e9-05f0-44b1-96ba-3649288aa5dc.png" alt="Logo SUNEDU">
+        </div>
+      </div>
+      <img class="footer-pattern" src="https://www.image2url.com/r2/default/images/1779768373760-dc7d2757-11a3-4191-a4c6-5d8ee56008d6.png" alt="Patrón decorativo">
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Select all sections inside main that have an ID
+      const sections = document.querySelectorAll('main section[id]');
+      const navLinks = document.querySelectorAll('.nav-inner a');
+      // Offset to account for the sticky navigation bar height
+      const offset = 100;
+
+      function changeNav() {
+        let currentSectionId = '';
+        const scrollPosition = window.scrollY + offset;
+
+        // Find the current section by comparing scroll position with section offsets
+        for (const section of sections) {
+          if (section.offsetTop <= scrollPosition) {
+            currentSectionId = section.id;
+          } else {
+            // Since sections are ordered, we can break early
+            break;
+          }
+        }
+
+        // Update the 'active' class on the corresponding navigation link
+        navLinks.forEach(link => {
+          const linkHref = link.getAttribute('href');
+          link.classList.toggle('active', linkHref === '#' + currentSectionId);
+        });
+      }
+
+      // Initial call to set the active link on page load
+      changeNav();
+      // Add scroll event listener to update active link on scroll
+      window.addEventListener('scroll', changeNav);
+    });
+  </script>
+</body>
+</html>
